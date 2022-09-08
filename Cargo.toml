@@ -11,3 +11,8 @@ tracing = "*"
 tracing-subscriber = "*"
 wgpu = "*"
 pollster = "*"
+bytemuck = { version = "*", features = [ "derive" ] }
+image = { version = "*", features = ["png", "jpeg"] }
+anyhow = "*"
+paste = "*"
+cgmath = "*"

@@ -1,9 +1,10 @@
-use winit::{event::*, event_loop::EventLoop, window::WindowBuilder};
+use winit::{dpi::PhysicalSize, event::*, event_loop::EventLoop, window::WindowBuilder};
 
 pub async fn run() {
     let ev_loop = EventLoop::new();
     let win = WindowBuilder::new()
         .with_title("Learning wgpu")
+        .with_inner_size(PhysicalSize::new(1280, 720))
         .build(&ev_loop)
         .unwrap();
 
@@ -44,6 +45,9 @@ pub async fn run() {
                     Err(wgpu::SurfaceError::OutOfMemory) => ctrl_flow.set_exit(),
                     Err(e) => eprintln!("ERROR: {:?}", e),
                 }
+            }
+            Event::MainEventsCleared => {
+                win.request_redraw();
             }
             _ => (),
         }
